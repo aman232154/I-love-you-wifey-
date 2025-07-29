@@ -3,64 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Will You Marry Me?</title>
+  <title>Bacha Will You Marry Me?</title>
   <style>
     * { box-sizing: border-box; }
     body {
       margin: 0; padding: 0;
       font-family: 'Quicksand', sans-serif;
-      background: linear-gradient(to bottom right, #ffd1dc, #fffaf0);
+      background: linear-gradient(to bottom right, #ffe4ec, #fffef0);
       display: flex; justify-content: center; align-items: center;
-      height: 100vh; text-align: center; color: #6a004c;
-      animation: fadeIn 1.5s ease-in;
+      min-height: 100vh; text-align: center; color: #6a004c;
     }
     .container {
-      background: #ffffffcc; padding: 50px 40px;
+      background: #ffffffdd; padding: 30px 20px;
       border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-      width: 95%; max-width: 550px;
+      width: 95%; max-width: 520px;
       backdrop-filter: blur(10px);
+      display: flex; flex-direction: column; align-items: center;
     }
-    h1 {
-      font-size: 2rem; margin-bottom: 20px; white-space: pre-wrap;
+    .gif-stack img {
+      width: 100px; border-radius: 15px; margin: 5px;
     }
-    .buttons {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 15px; margin-top: 30px;
-    }
+    h1 { font-size: 1.8rem; margin: 20px 0; }
+    .buttons { display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap; justify-content: center; }
     button {
-      padding: 12px 20px; border: none; border-radius: 25px;
+      padding: 10px 18px; border: none; border-radius: 20px;
       font-size: 1rem; cursor: pointer; transition: 0.3s;
       background-color: #ffe0ec; color: #6a004c; font-weight: 600;
     }
-    button:hover {
-      background-color: #ffc5d9;
-    }
+    button:hover { background-color: #ffc7db; }
     #text {
-      margin-top: 25px; font-size: 1.1rem;
-      background-color: #fff3f8;
-      padding: 15px;
-      border-radius: 20px;
-      border: 1px dashed #ffb6c1;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
+      margin-top: 20px; font-size: 1rem; background: #fff8fb;
+      padding: 15px; border-radius: 15px; border: 1px dashed #ffc1d6;
     }
   </style>
 </head>
 <body>
-  <audio id="bg-music" autoplay loop>
-    <source src="https://youtu.be/XeYOQhmlcf4" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
   <div class="container">
-    <h1 id="question">💍 Kumkum, will you marry me? 👉🏻👈🏻</h1>
+    <div class="gif-stack">
+      <img src="https://media.tenor.com/Bnb1Go_T4WQAAAAC/bubu-rub-bubu-love-dudu-bubu-sweet-bubu-cuddle-bubu-dudu-sweet.gif" alt="gif1">
+      <img src="https://media.tenor.com/V8a6_r_Fus0AAAAC/airallia-cat-chan-bleh-tongue-out-tease.gif" alt="gif2">
+      <img src="https://media.tenor.com/lIO3bGb7oRMAAAAC/twitter-cute-nail-paint-nails-bubu-dudu.gif" alt="gif3">
+      <img src="https://media.tenor.com/B7ACjz2HcJgAAAAC/cat-jumping-catjump-funnycat.gif" alt="gif4">
+    </div>
+    <h1 id="question">💍 Bacha, will you marry me? 👉🏻👈🏻</h1>
     <div class="buttons">
       <button id="yesBtn">Yes</button>
       <button id="noBtn">No</button>
-      <button id="maybeBtn">Soch rahi hu 🤔</button>
-      <button id="loveBtn">Pyar to hai par shaadi...? 😅</button>
     </div>
     <p id="text"></p>
   </div>
@@ -70,50 +58,34 @@
     const question = document.getElementById('question');
     const yesBtn = document.getElementById('yesBtn');
     const noBtn = document.getElementById('noBtn');
-    const maybeBtn = document.getElementById('maybeBtn');
-    const loveBtn = document.getElementById('loveBtn');
 
     let noClickCount = 0;
 
-    document.body.addEventListener('click', () => {
-      const audio = document.getElementById('bg-music');
-      if (audio.paused) {
-        audio.play().catch(e => console.log('Autoplay blocked:', e));
-      }
-    }, { once: true });
-
     yesBtn.onclick = () => {
-      question.textContent = "💖 Pta tha muje aap meri wifey bnana chahati ho!";
-      textEl.textContent = "🥰😚Thanks Bacha! Muje pata tha aap haan hi karoge! Aap jab se meri zindagi mein aaye ho, meri zindagi black & white se colourful ho gayi hai! ❤️ Ab bacchon ka bhi plan karein kya? 😄";
+      question.textContent = "💖 Bacha meri jaan, muje pta tha tu haan hi karegi!";
+      textEl.textContent = "🥹🥹 Tu meri zindagi ka sabse sundar hissa hai bacha! Tu haan bolke meri duniya aur bhi pyaari kar di 😭💖 Chal ab shaadi ki shopping chalu karein? 😚💍";
     };
+
+    const noMessages = [
+      "😢 Bacha soch le ek baar, mera kya hoga?",
+      "😭 Main bina tere marr jaunga! 🔪",
+      "😩 Tu 'haan' nahi boli toh main tera haath pakad lunga 😁",
+      "🥲 Gandi bachi hai tu, haan bol na yaar 🥺",
+      "💔 Dekh meri aankhon mein aansu aa gaye bacha...",
+      "😖 Itna ignore mat kar, tu hi toh meri zindagi hai!",
+      "🫣 Sharam kar! Ek baar haan bol ke to dekh!",
+      "🥹 Ab to haan bol de, please? Itna bhi mat rulaya kar yaar",
+      "😤 Aakhri baar puchh raha hoon bacha... HAAN ya HAAN? 😏",
+      "🤝 Ab tu haan bolegi tabhi main maanunga! Hamesha ka saath chahiye mujhe ❤️"
+    ];
 
     noBtn.onclick = () => {
-      noClickCount++;
-      switch (noClickCount) {
-        case 1:
-          question.textContent = "💍 Kumkum, will you marry me? 👉🏻👈🏻 pls";
-          textEl.textContent = "😭 Soch le ek baar... mera kya hoga?";
-          break;
-        case 2:
-          textEl.textContent = "🔪 Mai mar jaunga 😭";
-          break;
-        case 3:
-          textEl.textContent = "😁 Mai tera haath pakad lunga!";
-          break;
-        case 4:
-          textEl.textContent = "🥲 Gandi bachi...";
-          break;
-        default:
-          textEl.textContent = "😩 Bas ab haan kar de, dil toot jayega warna...";
+      if (noClickCount < noMessages.length) {
+        textEl.textContent = noMessages[noClickCount];
+        noClickCount++;
+      } else {
+        textEl.textContent = "😡 Tere haan ke bina yeh website band nahi hogi... bol haan bacha!";
       }
-    };
-
-    maybeBtn.onclick = () => {
-      textEl.textContent = "🧠 Thoda aur soch lo, main tab tak intezaar karunga… par zyada mat sochna 😭";
-    };
-
-    loveBtn.onclick = () => {
-      textEl.textContent = "💘 Mujhe pata tha dil mein kuch toh feelings hain… Ab bas ek haan keh do, main sare rishtedar mana lunga 😅";
     };
   </script>
 </body>
