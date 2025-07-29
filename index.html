@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -49,9 +50,11 @@
 </head>
 <body>
   <audio id="bg-music" autoplay loop>
-    <source src="https://docs.google.com/uc?export=download&id=1-0vPfbp-Nqs2ifhMtnqtz1o11K0UAWzH" type="audio/mpeg">
+    <source src="https://example.com/ab-mujhe-raat-din.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
-  </audio>  <div class="container">
+  </audio>
+
+  <div class="container">
     <h1 id="question">💍 Kumkum, will you marry me? 👉🏻👈🏻</h1>
     <div class="buttons">
       <button id="yesBtn">Yes</button>
@@ -60,7 +63,9 @@
       <button id="loveBtn">Pyar to hai par shaadi...? 😅</button>
     </div>
     <p id="text"></p>
-  </div>  <script>
+  </div>
+
+  <script>
     const textEl = document.getElementById('text');
     const question = document.getElementById('question');
     const yesBtn = document.getElementById('yesBtn');
@@ -110,5 +115,6 @@
     loveBtn.onclick = () => {
       textEl.textContent = "💘 Mujhe pata tha dil mein kuch toh feelings hain… Ab bas ek haan keh do, main sare rishtedar mana lunga 😅";
     };
-  </script></body>
+  </script>
+</body>
 </html>
