@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -45,30 +44,57 @@
       from { opacity: 0; transform: scale(0.9); }
       to { opacity: 1; transform: scale(1); }
     }
+    img {
+      margin-top: 20px;
+      max-width: 100%;
+      border-radius: 20px;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>💍 Kumkum, will you marry me? 👉🏼👈🏼</h1>
+  <audio autoplay loop>
+    <source src="https://dl.dropboxusercontent.com/s/k80ib3rf6r5s1b6/ab-mujhe-raat-din.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>  <div class="container">
+    <h1 id="question">💍 Kumkum, will you marry me? 👉🏻👈🏻</h1>
+    <img id="gif" src="https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif" alt="Romantic GIF">
     <div class="buttons">
       <button id="yesBtn">Yes</button>
       <button id="noBtn">No</button>
     </div>
     <p id="text"></p>
-  </div>
-
-  <script>
+  </div>  <script>
     const textEl = document.getElementById('text');
+    const question = document.getElementById('question');
     const yesBtn = document.getElementById('yesBtn');
     const noBtn = document.getElementById('noBtn');
 
+    let noClickCount = 0;
+
     yesBtn.onclick = () => {
-      textEl.textContent = "🥰😚Thanks Bacha! Muje pata tha aap haan hi karoge! Aap jab se meri zindagi mein aaye ho meri zindagi black & white se colourful ho gayi hai! ❤️ Ab baccho ka bhi plan kar lein kya? 😄";
+      question.textContent = "💖 Pta tha muje aap meri wifey bnana chahati ho!";
+      textEl.textContent = "🥰😚Thanks Bacha! Aap jab se meri zindagi mein aaye ho, meri zindagi black & white se colourful ho gayi hai! ❤️ Ab bacchon ka bhi plan karein kya? 😄";
     };
 
     noBtn.onclick = () => {
-      textEl.textContent = "😢 Are you sure? Please reconsider...";
+      noClickCount++;
+      switch (noClickCount) {
+        case 1:
+          question.textContent = "💍 Kumkum, will you marry me? 👉🏻👈🏻 pls";
+          textEl.textContent = "😭 Soch le ek baar... mera kya hoga?";
+          break;
+        case 2:
+          textEl.textContent = "🔪 Mai mar jaunga 😭";
+          break;
+        case 3:
+          textEl.textContent = "😁 Mai tera haath pakad lunga!";
+          break;
+        case 4:
+          textEl.textContent = "🥲 Gandi bachi...";
+          break;
+        default:
+          textEl.textContent = "Bas ab Yes kar de warna gif delete ho jaega 😅";
+      }
     };
-  </script>
-</body>
+  </script></body>
 </html>
