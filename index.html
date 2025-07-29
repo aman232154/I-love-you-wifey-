@@ -8,59 +8,56 @@
     body {
       margin: 0; padding: 0;
       font-family: 'Quicksand', sans-serif;
-      background: linear-gradient(to top right, #ffe4f0, #ffd1dc);
+      background: linear-gradient(to bottom right, #ffd1dc, #fffaf0);
       display: flex; justify-content: center; align-items: center;
       height: 100vh; text-align: center; color: #6a004c;
-      animation: fadeIn 2s ease-in;
+      animation: fadeIn 1.5s ease-in;
     }
     .container {
-      background: #fff0f5; padding: 40px;
-      border-radius: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-      width: 90%; max-width: 500px;
+      background: #ffffffcc; padding: 50px 40px;
+      border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+      width: 95%; max-width: 550px;
+      backdrop-filter: blur(10px);
     }
     h1 {
-      font-size: 1.5rem; margin-bottom: 20px; white-space: pre-wrap;
+      font-size: 2rem; margin-bottom: 20px; white-space: pre-wrap;
     }
     .buttons {
-      display: flex; justify-content: center; gap: 25px; margin-top: 30px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 15px; margin-top: 30px;
     }
     button {
-      padding: 12px 30px; border: none; border-radius: 25px;
+      padding: 12px 20px; border: none; border-radius: 25px;
       font-size: 1rem; cursor: pointer; transition: 0.3s;
+      background-color: #ffe0ec; color: #6a004c; font-weight: 600;
     }
-    #yesBtn {
-      background-color: #ff69b4; color: white;
+    button:hover {
+      background-color: #ffc5d9;
     }
-    #yesBtn:hover {
-      background-color: #ff1493;
-    }
-    #noBtn {
-      background-color: #e0e0e0; color: #333;
-    }
-    #noBtn:hover {
-      background-color: #ccc;
+    #text {
+      margin-top: 25px; font-size: 1.1rem;
+      background-color: #fff3f8;
+      padding: 15px;
+      border-radius: 20px;
+      border: 1px dashed #ffb6c1;
     }
     @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
+      from { opacity: 0; transform: scale(0.95); }
       to { opacity: 1; transform: scale(1); }
-    }
-    img {
-      margin-top: 20px;
-      max-width: 100%;
-      border-radius: 20px;
     }
   </style>
 </head>
 <body>
-  <audio autoplay loop>
-    <source src="https://dl.dropboxusercontent.com/s/k80ib3rf6r5s1b6/ab-mujhe-raat-din.mp3" type="audio/mpeg">
+  <audio id="bg-music" autoplay loop>
+    <source src="https://docs.google.com/uc?export=download&id=1-0vPfbp-Nqs2ifhMtnqtz1o11K0UAWzH" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>  <div class="container">
     <h1 id="question">💍 Kumkum, will you marry me? 👉🏻👈🏻</h1>
-    <img id="gif" src="https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif" alt="Romantic GIF">
     <div class="buttons">
       <button id="yesBtn">Yes</button>
       <button id="noBtn">No</button>
+      <button id="maybeBtn">Soch rahi hu 🤔</button>
+      <button id="loveBtn">Pyar to hai par shaadi...? 😅</button>
     </div>
     <p id="text"></p>
   </div>  <script>
@@ -68,12 +65,21 @@
     const question = document.getElementById('question');
     const yesBtn = document.getElementById('yesBtn');
     const noBtn = document.getElementById('noBtn');
+    const maybeBtn = document.getElementById('maybeBtn');
+    const loveBtn = document.getElementById('loveBtn');
 
     let noClickCount = 0;
 
+    document.body.addEventListener('click', () => {
+      const audio = document.getElementById('bg-music');
+      if (audio.paused) {
+        audio.play().catch(e => console.log('Autoplay blocked:', e));
+      }
+    }, { once: true });
+
     yesBtn.onclick = () => {
       question.textContent = "💖 Pta tha muje aap meri wifey bnana chahati ho!";
-      textEl.textContent = "🥰😚Thanks Bacha! Aap jab se meri zindagi mein aaye ho, meri zindagi black & white se colourful ho gayi hai! ❤️ Ab bacchon ka bhi plan karein kya? 😄";
+      textEl.textContent = "🥰😚Thanks Bacha! Muje pata tha aap haan hi karoge! Aap jab se meri zindagi mein aaye ho, meri zindagi black & white se colourful ho gayi hai! ❤️ Ab bacchon ka bhi plan karein kya? 😄";
     };
 
     noBtn.onclick = () => {
@@ -93,8 +99,16 @@
           textEl.textContent = "🥲 Gandi bachi...";
           break;
         default:
-          textEl.textContent = "Bas ab Yes kar de warna gif delete ho jaega 😅";
+          textEl.textContent = "😩 Bas ab haan kar de, dil toot jayega warna...";
       }
+    };
+
+    maybeBtn.onclick = () => {
+      textEl.textContent = "🧠 Thoda aur soch lo, main tab tak intezaar karunga… par zyada mat sochna 😭";
+    };
+
+    loveBtn.onclick = () => {
+      textEl.textContent = "💘 Mujhe pata tha dil mein kuch toh feelings hain… Ab bas ek haan keh do, main sare rishtedar mana lunga 😅";
     };
   </script></body>
 </html>
